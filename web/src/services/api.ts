@@ -105,7 +105,7 @@ export default class API {
     return this.fetch(`${this.getLocalePath()}/sentences?count=${count}`);
   }
 
-  fetchRandomClips(count: number = 1): Promise<Clip[]> {
+  async fetchRandomClips(count = 1): Promise<Clip[]> {
     return this.fetch(`${this.getClipPath()}?count=${count}`);
   }
 
@@ -200,9 +200,7 @@ export default class API {
     });
   }
 
-  fetchClipsStats(
-    locale?: string
-  ): Promise<
+  fetchClipsStats(locale?: string): Promise<
     {
       date: string;
       total: number;
@@ -212,9 +210,7 @@ export default class API {
     return this.fetch(API_PATH + (locale ? '/' + locale : '') + '/clips/stats');
   }
 
-  fetchClipVoices(
-    locale?: string
-  ): Promise<
+  fetchClipVoices(locale?: string): Promise<
     {
       date: string;
       value: number;
